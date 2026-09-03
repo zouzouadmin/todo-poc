@@ -4,7 +4,7 @@ type AppVariant = "development" | "preview" | "production";
 
 const APP_VARIANT = (process.env.APP_VARIANT ?? "development") as AppVariant;
 
-const BASE_PACKAGE = 'com.zouzougo.todopoc';
+const BASE_PACKAGE = "com.zouzougo.todopoc";
 const BASE_SLUG = "todo-poc";
 
 type VariantConfig = {
