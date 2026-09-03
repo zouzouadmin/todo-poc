@@ -8,7 +8,7 @@
     "base": {
       "node": "22.14.0",
       "android": {
-        "resourceClass": "large"
+        "resourceClass": "medium"
       }
     },
     "development": {
