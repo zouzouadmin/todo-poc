@@ -4,8 +4,7 @@ type AppVariant = "development" | "preview" | "production";
 
 const APP_VARIANT = (process.env.APP_VARIANT ?? "development") as AppVariant;
 
-// 之後全域取代這一行即可換成正式專案的 package name
-const BASE_PACKAGE = "com.example.todopoc";
+const BASE_PACKAGE = "com.zouzougo.todopoc";
 const BASE_SLUG = "todo-poc";
 
 type VariantConfig = {
