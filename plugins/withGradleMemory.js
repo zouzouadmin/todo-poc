@@ -2,7 +2,7 @@ const { withGradleProperties } = require("expo/config-plugins");
 
 const PROPS = {
   "org.gradle.jvmargs":
-    "-Xmx4096m -XX:MaxMetaspaceSize=768m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8",
+    "-Xmx3072m -XX:MaxMetaspaceSize=768m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8",
   "org.gradle.daemon": "false",
   "org.gradle.parallel": "false",
   "org.gradle.configureondemand": "false",
