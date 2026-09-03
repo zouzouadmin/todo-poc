@@ -10,6 +10,8 @@ web-build/
 expo-env.d.ts
 
 # Native
+/ios
+/android
 .kotlin/
 *.orig.*
 *.jks
@@ -17,6 +19,7 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+*.keystore
 
 # Metro
 .metro-health-check*
@@ -30,12 +33,10 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
-
 # typescript
 *.tsbuildinfo
 
-# generated native folders
-/ios
-/android
+# Secrets
+.env*.local
+credentials.json
+google-service-account.json

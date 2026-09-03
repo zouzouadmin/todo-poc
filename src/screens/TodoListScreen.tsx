@@ -1,15 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
+import Constants from "expo-constants";
 import { useSQLiteContext } from "expo-sqlite";
 import { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import AddTaskSheet from "../components/AddTaskSheet";
 import TaskItem from "../components/TaskItem";
@@ -22,6 +23,9 @@ import {
 } from "../db/tasksRepository";
 import { colors, spacing } from "../theme";
 import type { NewTaskInput, Task } from "../db/types";
+
+const appVariant = String(Constants.expoConfig?.extra?.appVariant ?? "unknown");
+const appVersion = Constants.expoConfig?.version ?? "0.0.0";
 
 export default function TodoListScreen() {
   const db = useSQLiteContext();
@@ -70,7 +74,12 @@ export default function TodoListScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Family Tasks</Text>
+        <View>
+          <Text style={styles.headerTitle}>Family Tasks</Text>
+          <Text style={styles.headerSubtitle}>
+            v{appVersion} · {appVariant}
+          </Text>
+        </View>
         <View style={styles.headerActions}>
           <Pressable
             style={styles.iconButton}
@@ -105,7 +114,9 @@ export default function TodoListScreen() {
         )}
         ListEmptyComponent={
           completedTasks.length === 0 ? (
-            <Text style={styles.emptyText}>No tasks yet. Tap + to add one.</Text>
+            <Text style={styles.emptyText}>
+              No tasks yet. Tap + to add one.
+            </Text>
           ) : null
         }
         ListFooterComponent={
@@ -151,6 +162,11 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "800",
     color: colors.textPrimary,
+  },
+  headerSubtitle: {
+    fontSize: 12,
+    color: colors.textMuted,
+    marginTop: 2,
   },
   headerActions: {
     flexDirection: "row",
