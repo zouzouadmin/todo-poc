@@ -68,6 +68,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // SDK 57 起原生 splash screen 改由 expo-splash-screen 這個 config plugin 負責,
   // 不再吃最上層的 splash 欄位
   plugins: [
+    "./plugins/withGradleMemory",
     "expo-sqlite",
     "@react-native-community/datetimepicker",
     "expo-font",
