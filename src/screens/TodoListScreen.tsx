@@ -44,8 +44,23 @@ export default function TodoListScreen() {
   }, [db]);
 
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    let cancelled = false;
+
+    (async () => {
+      const [open, done] = await Promise.all([
+        getOpenTasks(db),
+        getCompletedTasks(db),
+      ]);
+      if (!cancelled) {
+        setOpenTasks(open);
+        setCompletedTasks(done);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [db]);
 
   async function handleToggle(task: Task) {
     await setTaskCompleted(db, task.id, task.completed === 0);
